@@ -8,7 +8,6 @@ const tasks = ref([
   { text: 'belajar javascript', done: false },
   { text: 'mengerjakan tugas', done: false }
 ])
-
 const addTask = () => {
   if (newTask.value.trim() !== '') {
     tasks.value.push({ text: newTask.value, done: false })
@@ -18,6 +17,11 @@ const addTask = () => {
 const removeTask = (index) => {
   tasks.value.splice(index, 1)
 }
+const filteredTasks = computed(() => {
+  return showOnlyIncomplete.value
+    ? tasks.value.filter(task => !task.done)
+    : tasks.value
+})
 
 </script>
 
@@ -33,6 +37,13 @@ const removeTask = (index) => {
       <input v-model="newTask" placeholder="Tambahkan kegiatan..." @keyup.enter="addTask" />
       <button @click="addTask">Tambah</button>
     </div>
+    <div class="filter">
+      <label>
+        <input type="checkbox" v-model="showOnlyIncomplete" /> 
+        Kegiatan yang belum selesai
+      </label>
+    </div>
+
     <ul class="task-list">
       <li v-for="(task, index) in filteredTasks" :key="index" class="task-item">
         <input type="checkbox" v-model="task.done" />

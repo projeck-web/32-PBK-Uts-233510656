@@ -19,6 +19,10 @@ const tasks = ref([
   <div class="app-container">
     <h1 class="title">Daftar Kegiatan</h1>
   </div>
+  <div class="form">
+      <input v-model="newTask" placeholder="Tambahkan kegiatan..." @keyup.enter="addTask" />
+      <button @click="addTask">Tambah</button>
+    </div>
 </template>
 
 <style>

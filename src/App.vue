@@ -8,6 +8,7 @@ const tasks = ref([
   { text: 'belajar javascript', done: false },
   { text: 'mengerjakan tugas', done: false }
 ])
+
 const addTask = () => {
   if (newTask.value.trim() !== '') {
     tasks.value.push({ text: newTask.value, done: false })
@@ -27,16 +28,19 @@ const removeTask = (index) => {
 
   <div class="app-container">
     <h1 class="title">Daftar Kegiatan</h1>
-  </div>
-  <div class="form">
+
+    <div class="form">
       <input v-model="newTask" placeholder="Tambahkan kegiatan..." @keyup.enter="addTask" />
       <button @click="addTask">Tambah</button>
-      <ul class="task-list">
+    </div>
+    <ul class="task-list">
       <li v-for="(task, index) in filteredTasks" :key="index" class="task-item">
+        <input type="checkbox" v-model="task.done" />
+        <span :class="{ done: task.done }">{{ task.text }}</span>
         <button class="cancel-btn" @click="removeTask(index)">Batalkan</button>
       </li>
     </ul>
-    </div>
+  </div>
 </template>
 
 <style>

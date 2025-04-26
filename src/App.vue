@@ -8,6 +8,12 @@ const tasks = ref([
   { text: 'belajar javascript', done: false },
   { text: 'mengerjakan tugas', done: false }
 ])
+const addTask = () => {
+  if (newTask.value.trim() !== '') {
+    tasks.value.push({ text: newTask.value, done: false })
+    newTask.value = ''
+  }
+}
 
 </script>
 

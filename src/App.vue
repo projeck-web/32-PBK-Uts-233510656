@@ -12,7 +12,13 @@ const tasks = ref([
 </script>
 
 <template>
-  
+  <div class="paragraf">
+    <h1>Laras 233510656</h1>
+  </div>
+
+  <div class="app-container">
+    <h1 class="title">Daftar Kegiatan</h1>
+  </div>
 </template>
 
 <style>

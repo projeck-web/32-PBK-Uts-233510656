@@ -14,6 +14,9 @@ const addTask = () => {
     newTask.value = ''
   }
 }
+const removeTask = (index) => {
+  tasks.value.splice(index, 1)
+}
 
 </script>
 
@@ -28,6 +31,11 @@ const addTask = () => {
   <div class="form">
       <input v-model="newTask" placeholder="Tambahkan kegiatan..." @keyup.enter="addTask" />
       <button @click="addTask">Tambah</button>
+      <ul class="task-list">
+      <li v-for="(task, index) in filteredTasks" :key="index" class="task-item">
+        <button class="cancel-btn" @click="removeTask(index)">Batalkan</button>
+      </li>
+    </ul>
     </div>
 </template>
 
